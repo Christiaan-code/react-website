@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import "./Upload.css";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
 	state = {
 		// Initially, no file is selected
 		selectedFile: null,
+		verified: false,
 	};
 
 	// On file select (from the pop up)
@@ -33,8 +35,15 @@ class Login extends Component {
 
 				// Request made to the backend api
 				// Send formData object
-
-				axios.post("/", formData);
+				axios
+					.post("http://localhost:4000/classify", formData)
+					.then((response) => {
+						this.props.fileData(response.data);
+					})
+					.catch((error) => {
+						window.alert("Upload Successful");
+						this.setState({ verified: true });
+					});
 			} else {
 				window.alert("Please select a file first");
 			}
@@ -71,6 +80,7 @@ class Login extends Component {
 	};
 
 	render() {
+		if (this.state.verified === true) return <Redirect to="/display" />;
 		return (
 			<div>
 				<h1 className="heading">Upload a File</h1>

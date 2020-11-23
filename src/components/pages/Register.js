@@ -40,7 +40,7 @@ class Register extends Component {
 		if (formValid(this.state)) {
 			console.log(`SUBMITTING`);
 			axios
-				.post("http://localhost:4000/users/login", this.state)
+				.post("http://localhost:4000/users/register", this.state)
 				.then((response) => {
 					console.log(response);
 					window.location.replace("../login");

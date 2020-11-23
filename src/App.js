@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Register from './components/pages/Register.js'
 import Login from './components/pages/Login.js'
 import Upload from './components/pages/Upload.js'
+import Displaydata from './components/pages/DisplayData';
 // import Contact from './components/pages/Contact'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path='/login' exact component={Login}/>
             <Route path='/register' exact component={Register}/>
             <Route path='/upload' exact component={Upload}/>
+            <Route path='/display' exact component={Displaydata}/>
           </Switch>
           <Footer />
         </Router>
