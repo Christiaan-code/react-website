@@ -1,0 +1,157 @@
+/* Colors */
+/*
+dark blue: #476A6F
+light blue: #258EA6
+dark green: #519E8A
+medium green: #7EB09B
+light green: #A3C4BC
+*/
+
+/*
+celadon green:      #21897e
+keppel:             #3ba99c
+medium turquoise:   #69d1c5
+aero:               #7ebce6
+medium purple:      #8980f5
+*/
+
+.wrapper {
+    height: 92vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+  }
+  
+  .form-wrapper {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 100px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 50px #555;
+    background-color: #242424;
+  }
+  
+  form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  h1 {
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    font-weight: lighter;
+    font-size: 3em;
+    padding: 0 0 20px;
+  }
+  
+  
+  label {
+    font-size: 1.5em;
+    margin-bottom: 0.25em;
+    color: #fff;
+  }
+
+  .link {
+    color: #aaa;
+  }
+  .link:hover {
+     color: #fff
+  }
+  input {
+    padding: 10px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #cfcfcf;
+    width: 400px;
+  }
+  
+  input::placeholder {
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: #999;
+  }
+  
+  input.error {
+    border: 1px solid #242424;
+  }
+  
+  .errorMessage {
+    color:#fff;
+    font-size: 0.75em;
+    display: relative;
+  }
+  
+  .firstName {
+    margin-right: 1%;
+  }
+  
+  .lastName {
+    margin-left: 1%;
+  }
+  
+  .firstName,
+  .lastName,
+  .email,
+  .username,
+  .password {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .firstName,
+  .lastName {
+    width: 49%;
+  }
+  
+  .email,
+  .username,
+  .password {
+    width: 100%;
+  }
+  
+  .createAccount {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .createAccount button {
+    background-color: #fff;
+    color: #242424;
+    border: 2px solid #fff;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+    border-radius: 8px;
+  }
+  
+  .createAccount button:hover {
+    color:#242424;
+    background-color: #fff;
+    border: 2px solid #555;
+    border-radius: 8px;
+  }
+  
+  .createAccount small {
+    color: #999;
+    font-weight: lighter;
+  }
+
+  .input-form {
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    border-radius: 10px;
+  }
