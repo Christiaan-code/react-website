@@ -1,16 +1,115 @@
-import React from 'react'
+import React, { Component } from "react";
 import "./Upload.css";
+import axios from "axios";
 
-export default function Upload() {
-    return (
-        <>
-        <h1 className='heading'>Upload a File</h1>
-        
-        <div className="wrapper">
-            <div className="upload-div">
-                <button className="upload-btn">Upload</button>
-            </div>
-        </div>
-        </>
-    )
+class Login extends Component {
+	state = {
+		// Initially, no file is selected
+		selectedFile: null,
+	};
+
+	// On file select (from the pop up)
+	onFileChange = (event) => {
+		// Update the state
+		this.setState({ selectedFile: event.target.files[0] });
+	};
+
+	// On file upload (click the upload button)
+	onFileUpload = () => {
+		// Create an object of formData
+		{
+			if (this.state.selectedFile) {
+				const formData = new FormData();
+
+				// Update the formData object
+				formData.append(
+					"myFile",
+					this.state.selectedFile,
+					this.state.selectedFile.name
+				);
+
+				// Details of the uploaded file
+				console.log(this.state.selectedFile);
+
+				// Request made to the backend api
+				// Send formData object
+
+				axios.post("/", formData);
+			} else {
+				window.alert("Please select a file first");
+			}
+		}
+	};
+
+	// File content to be displayed after
+	// file upload is complete
+	fileData = () => {
+		if (this.state.selectedFile) {
+			return (
+				<div className="desc">
+					<h2 id="desc">File Details:</h2>
+					<p className="desc-p">
+						File Name: {this.state.selectedFile.name}
+					</p>
+					<p className="desc-p">
+						File Type: {this.state.selectedFile.type}
+					</p>
+					<p className="desc-p">
+						Last Modified:{" "}
+						{this.state.selectedFile.lastModifiedDate.toDateString()}
+					</p>
+				</div>
+			);
+		} else {
+			return (
+				<div className="desc">
+					<br />
+					<h4 id="desc">Choose before Pressing the Upload button</h4>
+				</div>
+			);
+		}
+	};
+
+	render() {
+		return (
+			<div>
+				<h1 className="heading">Upload a File</h1>
+				<div className="wrapper2">
+					<input
+						type="file"
+						id="fileElem"
+						class="visually-hidden"
+						onChange={this.onFileChange}
+					/>
+					<label id="inputs" for="fileElem">
+						Select some files
+					</label>
+					{/* <input
+						id="upload1"
+						type="file"
+						onChange={this.onFileChange}
+					/> */}
+					{/* <div className="upload-div">	
+                        <button
+							className="upload-btn-small"
+							onClick={this.onFileUpload}
+						>
+							Choose a file
+						</button>	
+					</div> */}
+					<div className="upload-div">
+						<button
+							className="upload-btn"
+							onClick={this.onFileUpload}
+						>
+							Upload
+						</button>
+					</div>
+					{this.fileData()}
+				</div>
+			</div>
+		);
+	}
 }
+
+export default Login;

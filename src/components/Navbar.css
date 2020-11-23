@@ -1,5 +1,5 @@
 .navbar {
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  background: #242424;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -27,6 +27,7 @@
   font-size: 2rem;
   display: flex;
   align-items: center;
+  background-color: #242424;
 }
 
 .fa-typo3 {

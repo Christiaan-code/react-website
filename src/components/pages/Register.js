@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
@@ -36,11 +37,16 @@ class Register extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-
 		if (formValid(this.state)) {
 			console.log(`SUBMITTING`);
+			axios
+				.post("http://localhost:4000/users/login", this.state)
+				.then((response) => {
+					console.log(response);
+					window.location.replace("../login");
+				});
 		} else {
-			console.error("Form Invalid - Display Error Message");
+			window.alert("Form Invalid");
 		}
 	};
 
@@ -116,9 +122,9 @@ class Register extends Component {
 							<button type="submit">Create Account</button>
 							<small>
 								<Link
-                  className= 'link'
-                  to="/login"
-                  textDecoration = 'none'
+									className="link"
+									to="/login"
+									textDecoration="none"
 									style={{ textDecoration: "none" }}
 								>
 									Already have an account?

@@ -16,11 +16,10 @@ medium purple:      #8980f5
 */
 
 .wrapper {
-    height: 92vh;
+    height: 82vh;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: #fff;
     padding-top: 10em;
@@ -70,10 +69,12 @@ medium purple:      #8980f5
     outline: none;
     border: 1px solid #cfcfcf;
     width: 400px;
+    background-color: #fff;
+    font-size: 1em;
   }
   
   input::placeholder {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: lighter;
     color: #999;
   }

@@ -1,73 +1,42 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./Register.css";
-import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Upload from './Upload'
+const axios = require("axios");
 
-// const emailRegex = RegExp(
-//   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-// );
-
-const formValid = ({ formErrors, ...rest }) => {
-	let valid = true;
-
-	Object.values(formErrors).forEach((val) => {
-		val.length > 0 && (valid = false);
-	});
-
-	Object.values(rest).forEach((val) => {
-		val === null && (valid = false);
-	});
-
-	return valid;
-};
-
-class Register extends Component {
+class Login extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			username: null,
-			password: null,
-			formErrors: {
-				username: "",
-				password: "",
-			},
+			username: "",
+			password: "",
+			verified: false,
 		};
 	}
 
 	handleSubmit = (e) => {
-        e.preventDefault();
-		if (formValid(this.state)) {
-            console.log(`SUBMITTING`); 
-		} else {
-			console.error("Form Invalid - Display Error Message");
-		}
+		e.preventDefault();
+		axios
+			.post(
+				"http://localhost:4000/users/login",
+				this.state
+			)
+			.then((response) => {
+				//    this.props.authHandler(response.data)
+                if (response)
+                this.setState({ verified: true });
+
+			})
+			.catch((error) => {
+				window.alert("Username or password incorrect");
+			});
+	};
+	handleChange = (e) => {
+		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	// handleChange = (e) => {
-	// 	e.preventDefault();
-	// 	const { name, value } = e.target;
-	// 	let formErrors = this.state.formErrors;
-
-	// 	switch (name) {
-	// 		case "username":
-	// 			formErrors.username =
-	// 				value.length < 3 ? "minimum 3 characters required" : "";
-	// 			break;
-	// 		case "password":
-	// 			formErrors.password =
-	// 				value.length < 6 ? "minimum 6 characters required" : "";
-	// 			break;
-	// 		default:
-	// 			break;
-	// 	}
-
-	// 	this.setState({ formErrors, [name]: value });
-	// };
 	render() {
-		const { formErrors } = false;
-
+		if (this.state.verified === true) return <Redirect to="/upload" />;
 		return (
 			<div className="wrapper">
 				<div className="form-wrapper">
@@ -77,31 +46,23 @@ class Register extends Component {
 							<label htmlFor="username">Username</label>
 							<input
 								type="text"
-								
 								placeholder="Enter your username"
 								name="username"
+								value={this.state.username}
+								onChange={this.handleChange}
 								noValidate
 							/>
-							{/* {formErrors.username.length > 0 && (
-								<span className="errorMessage">
-									{formErrors.username}
-								</span>
-							)} */}
 						</div>
 						<div className="password">
 							<label htmlFor="password">Password</label>
 							<input
 								type="password"
-								
 								placeholder="Choose a Password"
 								name="password"
+								value={this.state.password}
+								onChange={this.handleChange}
 								noValidate
 							/>
-							{/* {formErrors.password.length > 0 && (
-								<span className="errorMessage">
-									{formErrors.password}
-								</span>
-							)} */}
 						</div>
 						<div className="createAccount">
 							<button type="submit">Log In</button>
@@ -123,4 +84,4 @@ class Register extends Component {
 	}
 }
 
-export default Register;
+export default Login;
