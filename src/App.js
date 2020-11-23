@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import Footer from './components/Footer';
 import Register from './components/pages/Register.js'
 import Login from './components/pages/Login.js'
+import Upload from './components/pages/Upload.js'
 // import Contact from './components/pages/Contact'
 
 function App() {
@@ -15,8 +16,9 @@ function App() {
         <Navbar />
           <Switch>
             <Route path='/' exact component={Login}/>
-            <Route path='/register' exact component={Register}/>
             <Route path='/login' exact component={Login}/>
+            <Route path='/register' exact component={Register}/>
+            <Route path='/upload' exact component={Upload}/>
           </Switch>
           {/* <Footer /> */}
         </Router>

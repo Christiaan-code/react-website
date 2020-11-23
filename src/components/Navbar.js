@@ -26,7 +26,7 @@ function Navbar() {
     return (
     <nav className="navbar">
         <div className="navbar-container">
-            <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+            <Link to="/login" className="navbar-logo" onClick={closeMobileMenu}>
             <i className="fab fa-artstation"></i> <pre> Chris du Preez</pre>
             </Link>
             <div className='menu-icon' onClick ={handleClick}>

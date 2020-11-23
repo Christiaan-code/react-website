@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Upload from './Upload'
 
 // const emailRegex = RegExp(
 //   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -35,37 +37,36 @@ class Register extends Component {
 	}
 
 	handleSubmit = (e) => {
-		e.preventDefault();
-
+        e.preventDefault();
 		if (formValid(this.state)) {
-			console.log(`SUBMITTING`);
+            console.log(`SUBMITTING`); 
 		} else {
 			console.error("Form Invalid - Display Error Message");
 		}
 	};
 
-	handleChange = (e) => {
-		e.preventDefault();
-		const { name, value } = e.target;
-		let formErrors = this.state.formErrors;
+	// handleChange = (e) => {
+	// 	e.preventDefault();
+	// 	const { name, value } = e.target;
+	// 	let formErrors = this.state.formErrors;
 
-		switch (name) {
-			case "username":
-				formErrors.username =
-					value.length < 3 ? "minimum 3 characters required" : "";
-				break;
-			case "password":
-				formErrors.password =
-					value.length < 6 ? "minimum 6 characters required" : "";
-				break;
-			default:
-				break;
-		}
+	// 	switch (name) {
+	// 		case "username":
+	// 			formErrors.username =
+	// 				value.length < 3 ? "minimum 3 characters required" : "";
+	// 			break;
+	// 		case "password":
+	// 			formErrors.password =
+	// 				value.length < 6 ? "minimum 6 characters required" : "";
+	// 			break;
+	// 		default:
+	// 			break;
+	// 	}
 
-		this.setState({ formErrors, [name]: value });
-	};
+	// 	this.setState({ formErrors, [name]: value });
+	// };
 	render() {
-		const { formErrors } = this.state;
+		const { formErrors } = false;
 
 		return (
 			<div className="wrapper">
@@ -76,41 +77,31 @@ class Register extends Component {
 							<label htmlFor="username">Username</label>
 							<input
 								type="text"
-								className={
-									formErrors.username.length > 0
-										? "error"
-										: null
-								}
+								
 								placeholder="Enter your username"
 								name="username"
 								noValidate
-								onChange={this.handleChange}
 							/>
-							{formErrors.username.length > 0 && (
+							{/* {formErrors.username.length > 0 && (
 								<span className="errorMessage">
 									{formErrors.username}
 								</span>
-							)}
+							)} */}
 						</div>
 						<div className="password">
 							<label htmlFor="password">Password</label>
 							<input
 								type="password"
-								className={
-									formErrors.password.length > 0
-										? "error"
-										: null
-								}
+								
 								placeholder="Choose a Password"
 								name="password"
 								noValidate
-								onChange={this.handleChange}
 							/>
-							{formErrors.password.length > 0 && (
+							{/* {formErrors.password.length > 0 && (
 								<span className="errorMessage">
 									{formErrors.password}
 								</span>
-							)}
+							)} */}
 						</div>
 						<div className="createAccount">
 							<button type="submit">Log In</button>

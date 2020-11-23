@@ -23,6 +23,7 @@ medium purple:      #8980f5
     justify-content: center;
     align-items: center;
     background-color: #fff;
+    padding-top: 10em;
   }
   
   .form-wrapper {
