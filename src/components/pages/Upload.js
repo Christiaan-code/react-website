@@ -45,7 +45,7 @@ class Upload extends Component {
 			// Send formData object
 			
 			axios
-				.post("https://chrisclassification.herokuapp.com/classify" /*,formData*/)
+				.post("https://ccclassificationsapp.herokuapp.com/classify" /*,formData*/)
 				.then((response) => {
 					this.setState({ classifiedData: response.data });
 					this.setState({ verified: true });

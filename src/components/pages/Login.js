@@ -18,7 +18,7 @@ class Login extends Component {
 		e.preventDefault();
 		axios
 			.post(
-				"https://chrisclassification.herokuapp.com/users/login",
+				"https://ccclassificationsapp.herokuapp.com/users/login",
 				this.state
 			)
 			.then((response) => {
