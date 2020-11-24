@@ -1,128 +1,151 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import Displaybit from "../Displaybit";
+// import Displaybit from "../Displaybit";
 import "./DisplayData.css";
 
 class Displaydata extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			datapoint: null,
-			classification: null,
-			verified: false,
-		};
+		this.state.fileData = props.propData;
 	}
 
-	// changeIt = (e) => {
-	// 	const num = e.target;
-	// 	var input;
+	state = {
+		datapoint: null,
+		classification: null,
+		verified: false,
+		fileData: null,
+		updated: true,
+	};
 
-	// 	switch (num) {
-	// 		case "1":
-	// 			var input = document.getElementsById("i1");
-	// 			input.disabled = !input.disabled;
-	// 			break;
-	// 		default:
-	// 			break;
-	// 	}
-	// };
+	changeHandler() {
+		// this.setState({ fileData: this.props.propData})
+	}
 
 	showMessage = () => {
-        window.alert("Classifications updated");
-        this.setState({ verified: true });
+		window.alert("Classifications updated");
+		this.setState({ verified: true });
+
+		// this.forceUpdate();
 	};
 
 	render() {
-        if (this.state.verified === true) return  <Redirect to="/upload" />;
+		if (this.state.verified === true) return <Redirect to="/upload" />;
 		return (
 			<>
 				<div className="displaywrapper">
 					<div className="items">
-						<u1 className="list-items">
+						<ul className="list-items">
 							<li className="single-item-heading">Attribite</li>
 							<li className="single-item-heading">
 								<input
 									className="single-input"
 									type="text"
 									disabled=""
-									value="Classification"
-									disabled
+                                    onChange={this.changeHandler}
+                                    value="Classification"
+									readOnly
 								/>
 							</li>
 							<li id="edit">Edit</li>
-						</u1>
-						{/* {for (i = 0; i < 8; i++) {this.displayStuff()}}; */}
-						<u1 className="list-items">
+						</ul>
+						{/* {this.props.propData.map((item, i) => {
+							{
+								console.log(i);
+							}
+                            onChange={this.changeHandler}return <Displaybit data
+                            Value={item} key={i} />;
+						})} */}
+						<ul className="list-items">
 							<li className="single-item">White</li>
 							<li className="single-item">
 								<input
-									id="i1"
 									className="single-input"
 									type="text"
-									value="Race"
+                                    onChange={this.changeHandler}
+                                    value="Race"
 								/>
 							</li>
-							<li id="spaces">
-								<label class="container">
+							<li className="spaces">
+								<label className="container">
 									<input type="checkbox" />
-									<span class="checkmark"></span>
+									<span className="checkmark"></span>
 								</label>
 							</li>
-						</u1>
+						</ul>
 
-						<u1 className="list-items">
+						<ul className="list-items">
 							<li className="single-item">Male</li>
 							<li className="single-item">
 								<input
 									className="single-input"
 									type="text"
-									value="Gender"
+                                    onChange={this.changeHandler}
+                                    value="Gender"
 								/>
 							</li>
-							<li id="spaces">
-								<label class="container">
+							<li className="spaces">
+								<label className="container">
 									<input type="checkbox" />
-									<span class="checkmark"></span>
+									<span className="checkmark"></span>
 								</label>
 							</li>
-						</u1>
+						</ul>
 
-						<u1 className="list-items">
+						<ul className="list-items">
 							<li className="single-item">Christian</li>
 							<li className="single-item">
 								<input
 									className="single-input"
 									type="text"
-									value="Religion"
+                                    onChange={this.changeHandler}
+                                    value="Religion"
 								/>
 							</li>
-							<li id="spaces">
-								<label class="container">
+							<li className="spaces">
+								<label className="container">
 									<input type="checkbox" />
-									<span class="checkmark"></span>
+									<span className="checkmark"></span>
 								</label>
 							</li>
-						</u1>
-
-						<u1 className="list-items">
+						</ul>
+						<ul className="list-items">
 							<li className="single-item">9903235278088</li>
 							<li className="single-item">
 								<input
 									className="single-input"
 									type="text"
-									value="ID Number"
+                                    onChange={this.changeHandler}
+                                    value="ID Number"
 								/>
 							</li>
-							<li id="spaces">
-								<label class="container">
+							<li className="spaces">
+								<label className="container">
 									<input type="checkbox" />
-									<span class="checkmark"></span>
+									<span className="checkmark"></span>
 								</label>
 							</li>
-						</u1>
+						</ul>
 
-						<u1 className="list-items">
+						<ul className="list-items">
+							<li className="single-item">Single</li>
+							<li className="single-item">
+								<input
+									className="single-input"
+									type="text"
+                                    onChange={this.changeHandler}
+                                    value="Marital Status"
+								/>
+							</li>
+							<li className="spaces">
+								<label className="container">
+									<input type="checkbox" />
+									<span className="checkmark"></span>
+								</label>
+							</li>
+						</ul>
+
+						<ul className="list-items">
 							<li className="single-item">0846164444</li>
 							<li className="single-item">
 								<input
@@ -130,32 +153,14 @@ class Displaydata extends Component {
 									type="text"
 								/>
 							</li>
-							<li id="spaces">
-								<label class="container">
+							<li className="spaces">
+								<label className="container">
 									<input type="checkbox" />
-									<span class="checkmark"></span>
+									<span className="checkmark"></span>
 								</label>
 							</li>
-						</u1>
-
-						<u1 className="list-items">
-							<li className="single-item">Single</li>
-							<li className="single-item">
-								<input
-									className="single-input"
-									type="text"
-									value="Marital Status"
-								/>
-							</li>
-							<li id="spaces">
-								<label class="container">
-									<input type="checkbox" />
-									<span class="checkmark"></span>
-								</label>
-							</li>
-						</u1>
-
-						<u1 className="list-items">
+						</ul>
+						<ul className="list-items">
 							<li className="single-item">
 								christiaandpreez@gmail.com
 							</li>
@@ -163,16 +168,17 @@ class Displaydata extends Component {
 								<input
 									className="single-input"
 									type="text"
-									value="Email"
+                                    onChange={this.changeHandler}
+                                    value="Email Address"
 								/>
 							</li>
-							<li id="spaces">
-								<label class="container">
+							<li className="spaces">
+								<label className="container">
 									<input type="checkbox" />
-									<span class="checkmark"></span>
+									<span className="checkmark"></span>
 								</label>
 							</li>
-						</u1>
+						</ul>
 					</div>
 					<div className="upload-div">
 						<button

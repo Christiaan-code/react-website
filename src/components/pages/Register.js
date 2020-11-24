@@ -40,7 +40,7 @@ class Register extends Component {
 		if (formValid(this.state)) {
 			console.log(`SUBMITTING`);
 			axios
-				.post("http://localhost:4000/users/register", this.state)
+				.post("https://chrisclassification.herokuapp.com/users/register", this.state)
 				.then((response) => {
 					console.log(response);
 					window.location.replace("../login");

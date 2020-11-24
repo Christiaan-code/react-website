@@ -3,7 +3,10 @@ import "./Upload.css";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-class Login extends Component {
+class Upload extends Component {
+	constructor(props) {
+		super(props);
+	}
 	state = {
 		// Initially, no file is selected
 		selectedFile: null,
@@ -16,38 +19,51 @@ class Login extends Component {
 		this.setState({ selectedFile: event.target.files[0] });
 	};
 
+	// onFileUpload1 = () = => {
+	// 	if (this.state.selectedFile) {
+
+	// 	}
+	// }
+
+
 	// On file upload (click the upload button)
 	onFileUpload = () => {
 		// Create an object of formData
-		{
-			if (this.state.selectedFile) {
-				const formData = new FormData();
+		if (this.state.selectedFile) {
+			const formData = new FormData();
 
-				// Update the formData object
-				formData.append(
-					"myFile",
-					this.state.selectedFile,
-					this.state.selectedFile.name
-				);
+			// Update the formData object
+			// formData.append(
+			// 	"myFile",
+			// 	this.state.selectedFile,
+			// 	this.state.selectedFile.name
+			// );
 
-				// Details of the uploaded file
-				console.log(this.state.selectedFile);
+			// Details of the uploaded file
 
-				// Request made to the backend api
-				// Send formData object
-				axios
-					.post("http://localhost:4000/classify", formData)
-					.then((response) => {
-						this.props.fileData(response.data);
-					})
-					.catch((error) => {
-						window.alert("Upload Successful");
-						this.setState({ verified: true });
-					});
-			} else {
-				window.alert("Please select a file first");
-			}
+			// Request made to the backend api
+			// Send formData object
+			
+			axios
+				.post("https://chrisclassification.herokuapp.com/classify" /*,formData*/)
+				.then((response) => {
+					this.setState({ classifiedData: response.data });
+					this.setState({ verified: true });
+					
+					this.props.propData(this.state.classifiedData);	
+					window.alert("Upload Successful");
+				})
+				.catch((error) => {
+					window.alert("Upload unsuccessful");
+					// error.response.data;
+				});
+				
+				
+		} else {
+			window.alert("Please select a file first");
 		}
+
+		
 	};
 
 	// File content to be displayed after
@@ -122,4 +138,4 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+export default Upload;
